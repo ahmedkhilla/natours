@@ -63,7 +63,7 @@ const $a7bd2b0e83ecbd10$export$f558026a994b6051 = async (data, type)=>{
 };
 
 
-/* eslint-disable */ const $245ad133cda49593$var$stripe = Stripe('pk_test_51RBxaIHJH8vBPo5TYWnLN7V5N6MHo5uImMovk6fMiVtzqUGSyVZzZTxmxSu9Jf1gZYkJsxKD2LLnaoL5CqSOTJjr00dT86MN1F');
+/* eslint-disable */ const $245ad133cda49593$var$stripe = $245ad133cda49593$var$stripe('pk_test_51RBxaIHJH8vBPo5TYWnLN7V5N6MHo5uImMovk6fMiVtzqUGSyVZzZTxmxSu9Jf1gZYkJsxKD2LLnaoL5CqSOTJjr00dT86MN1F');
 const $245ad133cda49593$export$8d5bdbf26681c0c2 = async (tourId)=>{
     try {
         // 1) Get checkout session from API
