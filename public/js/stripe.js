@@ -1,5 +1,5 @@
 /* eslint-disable */
-const stripe = stripe('pk_test_51RBxaIHJH8vBPo5TYWnLN7V5N6MHo5uImMovk6fMiVtzqUGSyVZzZTxmxSu9Jf1gZYkJsxKD2LLnaoL5CqSOTJjr00dT86MN1F');
+const stripe = Stripe('pk_test_51RBxaIHJH8vBPo5TYWnLN7V5N6MHo5uImMovk6fMiVtzqUGSyVZzZTxmxSu9Jf1gZYkJsxKD2LLnaoL5CqSOTJjr00dT86MN1F');
 
 export const bookTour = async tourId => {
 	try {
