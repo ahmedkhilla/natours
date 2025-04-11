@@ -7,8 +7,7 @@
         "dev": "nodemon server.js",
         "start:prod": "cross-env NODE_ENV=production nodemon server.js",
         "format": "prettier --write .",
-        "build": "parcel watch public/js/start.js --dist-dir public/js",
-        "build:prod": "parcel build ./public/js/start.js --dist-dir public/js"
+        "build:client": "parcel build public/js/index.js --dist-dir public/js --no-content-hash"
     },
     "keywords": [],
     "author": "",
