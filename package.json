@@ -8,7 +8,7 @@
         "start:prod": "cross-env NODE_ENV=production nodemon server.js",
         "format": "prettier --write .",
         "build": "parcel watch public/js/index.js --dist-dir public/js",
-        "build:prod": "parcel build ./public/js/index.js --dist-dir ./js"
+        "build:prod": "parcel build ./public/js/index.js --dist-dir public/js"
     },
     "keywords": [],
     "author": "",
@@ -17,6 +17,7 @@
     "dependencies": {
         "axios": "^1.8.4",
         "bcrypt": "^5.1.1",
+        "compression": "^1.8.0",
         "cookie-parser": "^1.4.7",
         "core-js": "^3.41.0",
         "cross-env": "^7.0.3",

@@ -14,7 +14,7 @@ const $e33d9ff231aec008$export$596d806903d1f59e = async (email, password)=>{
     try {
         const res = await axios({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/users/login',
+            url: '/api/v1/users/login',
             data: {
                 email: email,
                 password: password
@@ -36,7 +36,7 @@ const $e33d9ff231aec008$export$a0973bcfe11b05c9 = async ()=>{
     try {
         const res = await axios({
             method: 'GET',
-            url: 'http://127.0.0.1:3000/api/v1/users/logout'
+            url: '/api/v1/users/logout'
         });
         res.data.status = 'success';
         location.reload(true);
@@ -50,7 +50,7 @@ const $e33d9ff231aec008$export$a0973bcfe11b05c9 = async ()=>{
 /* eslint-disable */ 
 const $a7bd2b0e83ecbd10$export$f558026a994b6051 = async (data, type)=>{
     try {
-        const url = type === 'password' ? 'http://127.0.0.1:3000/api/v1/users/updateMyPassword' : 'http://127.0.0.1:3000/api/v1/users/updateMe';
+        const url = type === 'password' ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
         const res = await axios({
             method: 'PATCH',
             url: url,
@@ -67,8 +67,7 @@ const $a7bd2b0e83ecbd10$export$f558026a994b6051 = async (data, type)=>{
 const $245ad133cda49593$export$8d5bdbf26681c0c2 = async (tourId)=>{
     try {
         // 1) Get checkout session from API
-        const session = await axios(`http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`);
-        console.log(session);
+        const session = await axios(`/api/v1/bookings/checkout-session/${tourId}`);
         // 2) Create checkout form + chanre credit card
         await $245ad133cda49593$var$stripe.redirectToCheckout({
             sessionId: session.data.session.id
@@ -81,10 +80,7 @@ const $245ad133cda49593$export$8d5bdbf26681c0c2 = async (tourId)=>{
 
 
 /* eslint-disable */ const $dc035ac067b37623$export$4c5dd147b21b9176 = (startLocation, locations)=>{
-    console.log(startLocation);
-    console.log(locations, 'start');
     const [lng, lat] = startLocation.coordinates;
-    console.log(lat, lng, 'after');
     const map = L.map('map', {
         zoomControl: false,
         scrollWheelZoom: false
@@ -159,7 +155,6 @@ if ($1cd085a7ac742057$var$userPasswordForm) $1cd085a7ac742057$var$userPasswordFo
     document.getElementById('password-confirm').value = '';
 });
 if ($1cd085a7ac742057$var$bookBtn) $1cd085a7ac742057$var$bookBtn.addEventListener('click', (e)=>{
-    console.log('clicked here');
     e.target.textContent = 'Processing';
     const { tourId: tourId } = e.target.dataset;
     (0, $245ad133cda49593$export$8d5bdbf26681c0c2)(tourId);

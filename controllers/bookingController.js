@@ -47,10 +47,8 @@ export const getCheckoutSession = catchAsync(async (req, res, next) => {
 export const createBookingCheckout = catchAsync(async (req, res, next) => {
 	// This is only TEMPORARY, because it's UNSECURE: everyone can make bookings without paying
 	const { tour, user, price } = req.query;
-	console.log(req.originalUrl, 'before');
 	if (!tour && !user && !price) return next();
 	await Booking.create({ tour, user, price });
-	console.log(req.originalUrl);
 	res.redirect(req.originalUrl.split('?')[0]);
 });
 

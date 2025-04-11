@@ -1,9 +1,6 @@
 /* eslint-disable */
 export const displayMap = (startLocation, locations) => {
-	console.log(startLocation);
-	console.log(locations, 'start');
 	const [lng, lat] = startLocation.coordinates;
-	console.log(lat, lng, 'after');
 	const map = L.map('map', {
 		zoomControl: false,
 		scrollWheelZoom: false,

@@ -9,6 +9,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import cookieParser from 'cookie-parser'
+import compression from 'compression'
 
 import AppError from './utils/appError.js';
 import sanitizeRequest from './utils/sanitzeRequest.js';
@@ -81,10 +82,11 @@ app.use(
     })
 );
 
+app.use(compression());
+
 // Test middleware
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
-    //console.log(req.cookies);
     next();
 });
 
