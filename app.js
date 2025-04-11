@@ -2,8 +2,6 @@ import express from 'express';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 import helmet from 'helmet';
-import mongoSanitize from 'express-mongo-sanitize';
-import xss from 'xss-clean';
 import hpp from 'hpp';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -11,7 +9,6 @@ import { dirname } from 'path';
 import cookieParser from 'cookie-parser'
 import compression from 'compression'
 
-import AppError from './utils/appError.js';
 import sanitizeRequest from './utils/sanitzeRequest.js';
 import globalErrorHandler from './controllers/errorController.js';
 import tourRouter from './routes/tourRoutes.js';
@@ -61,12 +58,8 @@ app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(cookieParser())
 
-// Data sanitization against NoSQL query injection
-//app.use(mongoSanitize());
-
-// Data sanitization against XSS
-//app.use(xss());
-//app.use(sanitizeRequest);
+// Data sanitization against NoSQL query injection and against XSS
+app.use(sanitizeRequest);
 
 // Prevent parameter pollution
 app.use(
@@ -96,10 +89,6 @@ app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/bookings', bookingRouter);
-
-//app.all('*', (req, res, next) => {
-//	next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
-//});
 
 app.use(globalErrorHandler);
 
