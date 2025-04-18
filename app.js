@@ -36,7 +36,7 @@ app.use(helmet());
 app.use((req, res, next) => {
     res.setHeader(
         'Content-Security-Policy',
-        "script-src 'self' https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js https://js.stripe.com/v3/ https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        "script-src 'self' https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js https://js.stripe.com/v3/ https://unpkg.com/leaflet@1.9.4/dist/leaflet.js https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
     );
     next();
 });
